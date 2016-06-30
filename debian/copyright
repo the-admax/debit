@@ -1,11 +1,10 @@
-This package was debianized by Jean-Baptiste Note <jean-baptiste.note@m4x.org> on
-Wed, 19 Jul 2006 15:36:28 +0200.
+This package was debianized by Jean-Baptiste Note <jean-baptiste.note@m4x.org> on Wed, 19 Jul 2006 15:36:28 +0200.
 
-It was downloaded from http://www.ulogic.org/trac
+And modified by Andrew D. on Thu, 30 Jun 2016 04:33:47 +0300.
 
-Upstream Author: Jean-Baptiste Note <jean-baptiste.note@m4x.org>
+Upstream Author: Andrew D. <the-admax@yandex.ru>
 
-Copyright: 2006, Jean-Baptiste Note
+Copyright: 2016, Andrew D.
 
 License: GPL, see `/usr/share/common-licenses/GPL'
 

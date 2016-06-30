@@ -101,6 +101,7 @@ int main(int argc, char **argv) {
 	parser.datadir = datadir,
 
 	err = yyparse(&parser);
+//    err = yyparse();
 	if (err) {
 	  g_warning("XDL parse error");
 	  /* XXX Free on error path */

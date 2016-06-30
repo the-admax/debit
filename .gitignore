@@ -20,3 +20,4 @@ semantic.cache
 cscope.*
 #Build leftovers
 git-ref
+*.o

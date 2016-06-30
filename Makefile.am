@@ -1,4 +1,8 @@
-SUBDIRS = data debian doc rpm windows altera utils xiledit xdl desktop tests codes
+SUBDIRS = data debian doc rpm windows altera utils xdl tests codes
+
+if BUILD_GUI
+  SUBDIRS += xiledit desktop
+endif
 
 AM_CPPFLAGS	= -DDATADIR=\"$(pkgdatadir)\"
 AM_CFLAGS	= -O3

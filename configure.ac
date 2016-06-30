@@ -5,7 +5,7 @@ AC_INIT([debit], [0.1], [jean-baptiste.note@m4x.org])
 AC_CONFIG_SRCDIR([debit.c])
 AC_CONFIG_HEADER([config.h])
 
-AM_INIT_AUTOMAKE([1.9 -Wall dist-bzip2])
+AM_INIT_AUTOMAKE([1.9 -Wall dist-bzip2 subdir-objects])
 
 dnl Checks for programs
 AC_PROG_CC
@@ -71,7 +71,7 @@ DEBIT_FEATURE_ENABLE(gtk, GTK+, auto, [
   PKG_CHECK_MODULES(GTK, [gtk+-2.0 >= $GTK_REQUIRED],
 			 [use_gtk=yes], [use_gtk=no])
 ])
-AM_CONDITIONAL([BUILD_GUI], [test "x$use_gtk" = xyes])
+AM_CONDITIONAL([BUILD_GUI], [test "x$use_gtk" = xyes -a "x$enable_gui" = xyes])
 AC_SUBST(GTK_CFLAGS)
 AC_SUBST(GTK_LIBS)
 
@@ -126,18 +126,29 @@ if test "x$enable_pipsdb" = "xyes"; then
    CPPFLAGS="$CPPFLAGS -D__COMPILED_PIPSDB "
 fi
 
-AC_CONFIG_FILES([Makefile tests/Makefile \
+AC_ARG_ENABLE(gui, [  --enable-gui    build with GUI], enable_gui=$enableval, enable_gui=no)
+#if test "x$enable_gui" = "xyes"; then
+#   BUILD_GUI=1
+#fi
+
+AC_CONFIG_FILES([Makefile \
+        tests/Makefile \
 		data/Makefile \
 		data/spartan3/Makefile \
 		data/virtex2/Makefile \
 		data/virtex4/Makefile \
 		data/virtex5/Makefile \
 		xdl/Makefile \
-		debian/Makefile rpm/Makefile \
-		windows/Makefile windows/scripts/Makefile \
+		debian/Makefile \
+        rpm/Makefile \
+		windows/Makefile \
+        windows/scripts/Makefile \
 		altera/Makefile	\
-		codes/Makefile utils/Makefile utils/correlation/Makefile \
+		codes/Makefile \
+        utils/Makefile \
+        utils/correlation/Makefile \
 		xiledit/Makefile \
-		desktop/Makefile desktop/artwork/Makefile \
+		desktop/Makefile \
+        desktop/artwork/Makefile \
 		doc/Makefile doc/man/Makefile])
 AC_OUTPUT

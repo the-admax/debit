@@ -19,10 +19,11 @@
 #include "design_v2.h"
 #include "bitstream.h"
 
-#define YYPARSE_PARAM yyparm
+//#define YYPARSE_PARAM yyparm
 #define YYDEBUG 1
 
-void yyerror(char *err) {
+void yyerror(void* p, char *err) {
+  parser_t* parser = (parser_t*)p;
   debit_log(L_PARSER, "XDL parser error: %s", err);
 }
 
@@ -216,6 +217,7 @@ static int treat_design(parser_t *parser,
 
 /* Options */
 %pure-parser
+%parse-param {void* yyparm}
 
 %union {
   char *name;
